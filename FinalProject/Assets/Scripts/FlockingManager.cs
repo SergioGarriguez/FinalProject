@@ -10,6 +10,7 @@ public class FlockingManager : MonoBehaviour
     public int numFish;
     public GameObject[] allFish;
     public float neighbourDistance, maxSpeed, minSpeed,rotationSpeed;
+    public bool threatened = false;
 
 
     // Start is called before the first frame update
@@ -24,6 +25,11 @@ public class FlockingManager : MonoBehaviour
             allFish[i] = (GameObject)Instantiate(fishPrefab, pos, Quaternion.LookRotation(randomize));
             allFish[i].GetComponent<Flocking>().myManager = this;
         }
+    }
+
+    public void UnderThreat()
+    {
+        threatened = true;
     }
 
     // Update is called once per frame
